@@ -56,7 +56,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact space-y-2 dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact space-y-2 z-20 dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navItems}
             </ul>
@@ -68,7 +68,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu space-x-8 menu-horizontal px-1">{navItems}</ul>
+          <ul className="menu space-x-8  menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end">
           {loading ? (
