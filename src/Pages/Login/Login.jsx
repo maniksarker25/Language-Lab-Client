@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/login/login.jpg";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { FaEye } from "react-icons/fa";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
+import useAuth from "../../Hooks/UseAuth";
 
 const Login = () => {
   const {
@@ -12,7 +13,29 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const [error,setError] = useState('');
+  const [success,setSuccess] = useState('');
+  const {logIn } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = (data) =>{
+    setError('');
+    setSuccess('');
+    console.log(data.email,data.password)
+    logIn(data.email,data.password)
+    .then(result =>{
+      const loggedInUser = result.user;
+      console.log(loggedInUser)
+      setSuccess('User Login Successfully')
+      reset();
+      navigate('/')
+    })
+    .catch(error=>{
+      const errorMessage = error.message;
+      setError(errorMessage);
+    })
+    
+  };
 
   //states
   const [showPassword, setShowPassword] = useState(false);
@@ -28,7 +51,7 @@ const Login = () => {
               <h1 className="text-3xl text-center text-primary font-bold">
                 Login
               </h1>
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(handleLogin)}>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -73,8 +96,8 @@ const Login = () => {
                     </a>
                   </label>
                 </div>
-                {/* {error && <p className="text-red-600">{error}</p>}
-                {success && <p className="text-green-600">{success}</p>} */}
+                {error && <p className="text-red-600">{error}</p>}
+                {success && <p className="text-green-600">{success}</p>}
                 <div className="form-control mt-6">
                   <input
                     className="primary-btn py-2"

@@ -3,8 +3,13 @@ import useAuth from "../../Hooks/UseAuth";
 
 const Navbar = () => {
   const {user} = useAuth();
-  console.log(user)
+  // console.log(user)
+  const {logOut } = useAuth();
   const loading = false;
+
+  const handleLogOut = () =>{
+    logOut();
+  }
   const navItems = (
     <>
       <NavLink
@@ -90,7 +95,7 @@ const Navbar = () => {
                   src="https://img.freepik.com/premium-vector/young-smiling-man-avatar-man-with-brown-beard-mustache-hair-wearing-yellow-sweater-sweatshirt-3d-vector-people-character-illustration-cartoon-minimal-style_365941-860.jpg?w=2000"
                 ></img>
               )}
-              <button className="primary-btn px-6 py-2">LogOut</button>
+              <button onClick={handleLogOut} className="primary-btn px-6 py-2">LogOut</button>
             </>
           ) : (
             <Link>

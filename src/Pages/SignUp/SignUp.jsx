@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { useContext, useState } from "react";
 import loginImg from "../../assets/login/login.jpg";
@@ -6,6 +6,7 @@ import { FaEye } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAuth from "../../Hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,7 +14,8 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   // const {signUp,updateUserProfile} = useAuth();
-  const {signUp,updateUserProfile} = useAuth();
+  const {signUp,updateUserProfile,logOut} = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -31,9 +33,31 @@ const SignUp = () => {
     .then(result =>{
         const createdUser =result.user;
         console.log(createdUser)
-        updateUserProfile(data.name,data.photoURL)
         setSuccess('User Created Successfully')
-        reset();
+        updateUserProfile(data.name,data.photoURL)
+        .then(() => {
+          const savedUser = {name:data.name, email:data.email}
+          fetch("http://localhost:5000/users",{
+            method:'POST',
+            headers:{'content-type':'application/json'},
+            body:JSON.stringify(savedUser)
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "User Created Successfully.Now Login Please!",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/login");
+              }
+            });
+        })
+        .catch((error) => console.log(error));
     })
     .catch(error=>{
         const errorMessage = error.errorMessage;
