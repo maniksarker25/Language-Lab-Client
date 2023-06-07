@@ -22,7 +22,6 @@ const DashBoard = () => {
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-52 md:w-72 text-xl h-full bg-[#125875] text-white">
-            {/* Sidebar content here */}
             <div className="ps-4 mb-12">
               <h3 className="text-3xl font-bold">LANGUAGE LAB</h3>
             </div>
