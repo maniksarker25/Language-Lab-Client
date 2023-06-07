@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const user = true;
+  const user = false;
   const loading = false;
   const navItems = (
     <>
@@ -92,7 +92,7 @@ const Navbar = () => {
             </>
           ) : (
             <Link>
-              <button className="primary-btn px-12 py-3">Login</button>
+             <Link to='/login'> <button className="primary-btn px-12 py-3">Login</button></Link>
             </Link>
           )}
         </div>

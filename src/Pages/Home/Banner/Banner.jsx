@@ -4,6 +4,7 @@ import banner2 from "../../../assets/banner/banner2.png";
 import bannerIcon1 from "../../../assets/banner/bannerIcon1.png";
 import bannerIcon2 from "../../../assets/banner/bannerIcon2.png";
 import bannerIcon3 from "../../../assets/banner/bannerIcon3.png";
+import './Banner.css'
 
 // Import Swiper styles
 import "swiper/css";
