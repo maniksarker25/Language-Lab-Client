@@ -1,9 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
@@ -36,7 +37,12 @@ const AuthProvider = ({ children }) => {
   };
   
   // find current user 
-   
+  useEffect(()=>{
+    const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
+      setUser(currentUser);
+      
+    })
+  },[]) 
 
   const authInfo = {
     user,
