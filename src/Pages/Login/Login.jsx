@@ -1,40 +1,44 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/login/login.jpg";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { FaEye } from "react-icons/fa";
 import { useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/UseAuth";
+// const navigate = useNavigate();
+// const location = useLocation();
+// const from = location.state?.from?.pathname || '/';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const { logIn } = useAuth();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  const [error,setError] = useState('');
-  const [success,setSuccess] = useState('');
-  const {logIn } = useAuth();
-  const navigate = useNavigate();
 
-  const handleLogin = (data) =>{
-    setError('');
-    setSuccess('');
-    console.log(data.email,data.password)
-    logIn(data.email,data.password)
-    .then(result =>{
-      const loggedInUser = result.user;
-      console.log(loggedInUser)
-      setSuccess('User Login Successfully')
-      reset();
-      navigate('/')
-    })
-    .catch(error=>{
-      const errorMessage = error.message;
-      setError(errorMessage);
-    })
-    
+  const handleLogin = (data) => {
+    setError("");
+    setSuccess("");
+    console.log(data.email, data.password);
+    logIn(data.email, data.password)
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        setSuccess("User Login Successfully");
+        reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setError(errorMessage);
+      });
   };
 
   //states

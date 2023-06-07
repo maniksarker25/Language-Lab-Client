@@ -36,7 +36,7 @@ const SignUp = () => {
         setSuccess('User Created Successfully')
         updateUserProfile(data.name,data.photoURL)
         .then(() => {
-          const savedUser = {name:data.name, email:data.email}
+          const savedUser = {name:data.name, email:data.email, photoUrl:data.photoURL, role:'student'}
           fetch("http://localhost:5000/users",{
             method:'POST',
             headers:{'content-type':'application/json'},
@@ -53,6 +53,7 @@ const SignUp = () => {
                   showConfirmButton: false,
                   timer: 1500,
                 });
+                logOut()
                 navigate("/login");
               }
             });
