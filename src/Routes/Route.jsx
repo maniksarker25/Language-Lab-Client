@@ -8,6 +8,8 @@ import PrivateRoute from "./PrivateRoute";
 import StudentHome from "../Pages/StudentDashboard/StudentHome/StudentHome";
 import MySelectedClass from "../Pages/StudentDashboard/MySelectedClass/MySelectedClass";
 import MyEnrolledClass from "../Pages/StudentDashboard/MyEnrolledClass/MyEnrolledClass";
+import AddAClass from "../Pages/InstructorDashboard/AddAClass/AddAClass";
+import MyClasses from "../Pages/InstructorDashboard/MyClasses/MyClasses";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +45,15 @@ export const router = createBrowserRouter([
       {
         path:'myEnrolledClass',
         element:<MyEnrolledClass/>
+      },
+      // instructor routes
+      {
+        path:'addAClass',
+        element:<AddAClass/>
+      },
+      {
+        path:'myClasses',
+        element:<MyClasses/>
       }
     ]
   }

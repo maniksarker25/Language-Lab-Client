@@ -4,8 +4,8 @@ import { NavLink, Outlet } from "react-router-dom";
 const DashBoard = () => {
 
   const isAdmin = false;
-  const isInstructors = false;
-  const isStudent = true;
+  const isInstructors = true;
+  const isStudent = false;
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="drawer lg:drawer-open">
@@ -35,7 +35,10 @@ const DashBoard = () => {
             {isInstructors && (
               <>
                 <li>
-                  <NavLink to='/dashboard/instructorsHome'>Instructors Home</NavLink>
+                  <NavLink to='/dashboard/addAClass'>Add A Class</NavLink>
+                </li>
+                <li>
+                  <NavLink to='/dashboard/myClasses'>My Classes</NavLink>
                 </li>
               </>
             )}
