@@ -25,14 +25,14 @@ const Navbar = () => {
         <li>Instructors</li>
       </NavLink>
       <NavLink
-        to="classes"
+        to="/classes"
         className={({ isActive }) => (isActive ? "active" : "default")}
       >
         <li>Classes</li>
       </NavLink>
       {user && (
         <NavLink
-          to="dashboard"
+          to="/dashboard/studentHome"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
           <li>Dashboard</li>

@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="mt-24">
       <div className="bg-[#032E3F] text-white">
-        <div className="max-w-screen-xl mx-auto lg:flex justify-between py-10 lg:py-20 ">
+        <div className="max-w-screen-xl mx-auto lg:flex justify-between p-10 lg:py-20 ">
           <div>
             <h2 className="text-2xl">About Us</h2>
             <hr />
@@ -63,9 +63,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-[#FF7350]">
-       <div className="max-w-screen-xl mx-auto flex justify-between text-white p-6">
-       <h1 className="text-2xl font-bold">Language Lab</h1>
-        <p className="text-xl font-semibold">Copyright © Qeducato 2023 . All rights reserved.</p>
+       <div className="max-w-screen-xl mx-auto flex justify-between text-white p-4 lg:p-6">
+       <h1 className="text-2xl font-bold hidden lg:block">Language Lab</h1>
+        <p className="lg:text-xl font-semibold">Copyright © Qeducato 2023 . All rights reserved.</p>
        </div>
       </div>
     </div>
