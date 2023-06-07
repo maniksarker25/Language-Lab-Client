@@ -1,7 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/UseAuth";
 
 const Navbar = () => {
-  const user = false;
+  const {user} = useAuth();
+  console.log(user)
   const loading = false;
   const navItems = (
     <>

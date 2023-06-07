@@ -1,20 +1,47 @@
 import { Link } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import loginImg from "../../assets/login/login.jpg";
 import { FaEye } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Providers/AuthProvider";
+import useAuth from "../../Hooks/UseAuth";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  // const {signUp,updateUserProfile} = useAuth();
+  const {signUp,updateUserProfile} = useAuth();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const handleSignUp = (data) => {
+    setError("");
+    setSuccess("");
+    // console.log(data)
+    if (data.password !== data.confirmPassword) {
+      return setError("Password not match");
+    }
+    signUp(data.email,data.password)
+    .then(result =>{
+        const createdUser =result.user;
+        console.log(createdUser)
+        updateUserProfile(data.name,data.photoURL)
+        setSuccess('User Created Successfully')
+        reset();
+    })
+    .catch(error=>{
+        const errorMessage = error.errorMessage;
+        console.log(errorMessage)
+        setError(errorMessage)
+    })
+
+  };
   return (
     <div className="container">
       <div className="hero mt-4 lg:mt-16">
@@ -27,7 +54,7 @@ const SignUp = () => {
               <h1 className="text-3xl text-center text-primary font-bold">
                 Login
               </h1>
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(handleSignUp)}>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Name</span>
@@ -132,13 +159,13 @@ const SignUp = () => {
                     <p className="text-red-600">Confirm Password is required</p>
                   )}
                 </div>
-                {/* {error && <p className="text-red-600">{error}</p>}
-                  {success && <p className="text-green-600">{success}</p>} */}
+                {error && <p className="text-red-600">{error}</p>}
+                {success && <p className="text-green-600">{success}</p>}
                 <div className="form-control mt-6">
                   <input
                     className="primary-btn py-2"
                     type="submit"
-                    value="Login"
+                    value="SignUp"
                   />
                 </div>
               </form>
