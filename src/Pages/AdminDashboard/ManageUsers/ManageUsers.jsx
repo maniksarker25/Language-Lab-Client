@@ -24,7 +24,7 @@ const ManageUsers = () => {
         }
       });
   };
-  // handle make instructor
+  // handle make instructor----
   const handleMakeInstructor = (user) => {
     fetch(`http://localhost:5000/users/instructor/${user._id}`, {
       method: "PATCH",
