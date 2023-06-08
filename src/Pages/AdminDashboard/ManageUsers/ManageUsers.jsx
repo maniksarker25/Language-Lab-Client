@@ -1,18 +1,17 @@
 import Swal from "sweetalert2";
 import UseUsers from "../../../Hooks/UseUsers";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const ManageUsers = () => {
   const [users, refetch] = UseUsers();
+  const [axiosSecure] = useAxiosSecure();
   console.log(users);
 
   // handle make admin
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
+    axiosSecure.patch(`http://localhost:5000/users/admin/${user._id}`)
       .then((data) => {
-        if (data.modifiedCount > 0) {
+        if (data.data.modifiedCount > 0) {
           refetch();
           Swal.fire({
             position: "top-center",
@@ -26,12 +25,9 @@ const ManageUsers = () => {
   };
   // handle make instructor----
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
+    axiosSecure.patch(`http://localhost:5000/users/instructor/${user._id}`)
       .then((data) => {
-        if (data.modifiedCount > 0) {
+        if (data.data.modifiedCount > 0) {
           refetch();
           Swal.fire({
             position: "top-center",
