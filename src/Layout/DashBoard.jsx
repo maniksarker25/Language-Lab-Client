@@ -1,9 +1,13 @@
-import { FaBars, FaHome } from "react-icons/fa";
+import { FaAd, FaBars, FaBookReader, FaEdit, FaFile, FaHome, FaUserGraduate, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import UseUserRole from "../Hooks/UseUserRole";
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 
 const DashBoard = () => {
-  const [userRole] = UseUserRole();
+  const [userRole,roleLoading] = UseUserRole();
+  if(roleLoading){
+    return <LoadingSpinner/>
+  }
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="drawer lg:drawer-open">
@@ -29,20 +33,20 @@ const DashBoard = () => {
                   <NavLink to="/dashboard/adminHome"> <FaHome /> Admin Home</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/manageClasses">Manage Classes</NavLink>
+                  <NavLink to="/dashboard/manageClasses"> <FaEdit/> Manage Classes</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/manageUsers">Manage Users</NavLink>
+                  <NavLink to="/dashboard/manageUsers"> <FaUsers/> Manage Users</NavLink>
                 </li>
               </>
             )}
             { userRole === 'instructor'&& (
               <>
                 <li>
-                  <NavLink to="/dashboard/addAClass">Add A Class</NavLink>
+                  <NavLink to="/dashboard/addAClass"> <FaAd/> Add A Class</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/myClasses">My Classes</NavLink>
+                  <NavLink to="/dashboard/myClasses"> <FaFile/> My Classes</NavLink>
                 </li>
               </>
             )}
@@ -82,10 +86,10 @@ const DashBoard = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/instructors">Instructors</NavLink>
+              <NavLink to="/instructors"> <FaUserGraduate/> Instructors</NavLink>
             </li>
             <li>
-              <NavLink to="/classes">Classes</NavLink>
+              <NavLink to="/classes"> <FaBookReader/> Classes</NavLink>
             </li>
           </ul>
         </div>
