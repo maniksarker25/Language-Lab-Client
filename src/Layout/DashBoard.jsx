@@ -2,10 +2,8 @@ import { FaBars, FaHome } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const DashBoard = () => {
-
   const isAdmin = false;
-  const isInstructors = true;
-  const isStudent = false;
+  const isInstructors = false;
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="drawer lg:drawer-open">
@@ -28,27 +26,54 @@ const DashBoard = () => {
             {isAdmin && (
               <>
                 <li>
-                  <NavLink to='/dashboard/adminHome' >Admin Home</NavLink>
+                  <NavLink to="/dashboard/adminHome">Admin Home</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manageClasses">Manage Classes</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manageUsers">Manage Users</NavLink>
                 </li>
               </>
             )}
             {isInstructors && (
               <>
                 <li>
-                  <NavLink to='/dashboard/addAClass'>Add A Class</NavLink>
+                  <NavLink to="/dashboard/addAClass">Add A Class</NavLink>
                 </li>
                 <li>
-                  <NavLink to='/dashboard/myClasses'>My Classes</NavLink>
+                  <NavLink to="/dashboard/myClasses">My Classes</NavLink>
                 </li>
               </>
             )}
-            {
-              isStudent && <>
-              <li><NavLink to='/dashboard/studentHome'>Student Home</NavLink></li>
-              <li><NavLink to='/dashboard/mySelectedClass'>My Selected Class</NavLink></li>
-              <li><NavLink to='/dashboard/myEnrolledClass'>My Enrolled Class</NavLink></li>
+
+            {!isAdmin && !isInstructors && (
+              <>
+                <li>
+                  <NavLink to="/dashboard/studentHome">Student Home</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/mySelectedClass">
+                    My Selected Class
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/myEnrolledClass">
+                    My Enrolled Class
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/payment">
+                    Payment
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/paymentHistory">
+                    Payment History
+                  </NavLink>
+                </li>
               </>
-            }
+            )}
             <div className="divider"></div>
             <li>
               <NavLink to="/">

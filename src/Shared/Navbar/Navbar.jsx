@@ -10,6 +10,8 @@ const Navbar = () => {
   const handleLogOut = () =>{
     logOut();
   }
+  const isAdmin = false;
+  const isInstructor = false;
   const navItems = (
     <>
       <NavLink
@@ -32,7 +34,7 @@ const Navbar = () => {
       </NavLink>
       {user && (
         <NavLink
-          to="/dashboard/studentHome"
+        to={isAdmin ? '/dashboard/adminHome' : (isInstructor ? '/dashboard/addAClass' : '/dashboard/studentHome')}
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
           <li>Dashboard</li>
