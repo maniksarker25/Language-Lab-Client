@@ -10,7 +10,7 @@ const Navbar = () => {
   const handleLogOut = () =>{
     logOut();
   }
-  const isAdmin = false;
+  const isAdmin = true;
   const isInstructor = false;
   const navItems = (
     <>

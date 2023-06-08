@@ -1,11 +1,94 @@
-
+import Swal from "sweetalert2";
+import UseUsers from "../../../Hooks/UseUsers";
 
 const ManageUsers = () => {
-    return (
-        <div>
-            <h1>manage Users</h1>
-        </div>
-    );
+  const [users, refetch] = UseUsers();
+  console.log(users);
+
+  // handle make admin
+  const handleMakeAdmin = (user) => {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `${user.name} is an admin now`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+  // handle make instructor
+  const handleMakeInstructor = (user) => {
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `${user.name} is an instructor now`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+  return (
+    <div>
+      <h1 className="text-5xl font-semibold text-center my-16">Manage Users</h1>
+      <div className="overflow-x-auto w-10/12 mx-auto">
+        <table className="table table-zebra">
+          {/* head */}
+          <thead>
+            <tr>
+              <th>SL</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, index) => (
+              <tr key={user._id}>
+                <th>{index + 1}</th>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.role}</td>
+                <td className="flex gap-2">
+                  <button
+                    onClick={() => handleMakeAdmin(user)}
+                    className={user.role == 'admin'?'bg-orange-200 px-2 py-1 font-semibold':"primary-btn px-2 py-1"}
+                    disabled={user.role === 'admin'}
+
+                  >
+                    Make Admin
+                  </button>
+                  <button 
+                    onClick={() => handleMakeInstructor(user)}
+                    className={user.role == 'instructor'?'bg-orange-200 px-2 py-1 font-semibold':"primary-btn px-2 py-1"}
+                    disabled={user.role === 'instructor'}
+                  >
+                    Make Instructor
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default ManageUsers;

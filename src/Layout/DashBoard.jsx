@@ -2,7 +2,7 @@ import { FaBars, FaHome } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const DashBoard = () => {
-  const isAdmin = false;
+  const isAdmin = true;
   const isInstructors = false;
   return (
     <div className="max-w-screen-xl mx-auto">
