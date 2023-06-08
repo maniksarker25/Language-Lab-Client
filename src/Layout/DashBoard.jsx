@@ -1,9 +1,9 @@
 import { FaBars, FaHome } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import UseUserRole from "../Hooks/UseUserRole";
 
 const DashBoard = () => {
-  const isAdmin = true;
-  const isInstructors = false;
+  const [userRole] = UseUserRole();
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="drawer lg:drawer-open">
@@ -23,7 +23,7 @@ const DashBoard = () => {
             <div className="ps-4 mb-12">
               <h3 className="text-3xl font-bold">LANGUAGE LAB</h3>
             </div>
-            {isAdmin && (
+            {userRole === 'admin' && (
               <>
                 <li>
                   <NavLink to="/dashboard/adminHome"> <FaHome /> Admin Home</NavLink>
@@ -36,7 +36,7 @@ const DashBoard = () => {
                 </li>
               </>
             )}
-            {isInstructors && (
+            { userRole === 'instructor'&& (
               <>
                 <li>
                   <NavLink to="/dashboard/addAClass">Add A Class</NavLink>
@@ -47,7 +47,7 @@ const DashBoard = () => {
               </>
             )}
 
-            {!isAdmin && !isInstructors && (
+            {userRole === 'student' && (
               <>
                 <li>
                   <NavLink to="/dashboard/studentHome"><FaHome /> Student Home</NavLink>

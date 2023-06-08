@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/UseAuth";
+import UseUserRole from "../../Hooks/UseUserRole";
 
 const Navbar = () => {
   const {user} = useAuth();
@@ -10,8 +11,8 @@ const Navbar = () => {
   const handleLogOut = () =>{
     logOut();
   }
-  const isAdmin = true;
-  const isInstructor = false;
+  const [userRole] = UseUserRole(); 
+  console.log(userRole)
   const navItems = (
     <>
       <NavLink
@@ -34,7 +35,7 @@ const Navbar = () => {
       </NavLink>
       {user && (
         <NavLink
-        to={isAdmin ? '/dashboard/adminHome' : (isInstructor ? '/dashboard/addAClass' : '/dashboard/studentHome')}
+        to={userRole === 'admin' ? '/dashboard/adminHome' : (userRole === 'instructor' ? '/dashboard/addAClass' : '/dashboard/studentHome')}
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
           <li>Dashboard</li>
