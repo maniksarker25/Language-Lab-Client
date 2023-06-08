@@ -26,7 +26,7 @@ const DashBoard = () => {
             {isAdmin && (
               <>
                 <li>
-                  <NavLink to="/dashboard/adminHome">Admin Home</NavLink>
+                  <NavLink to="/dashboard/adminHome"> <FaHome /> Admin Home</NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/manageClasses">Manage Classes</NavLink>
@@ -50,7 +50,7 @@ const DashBoard = () => {
             {!isAdmin && !isInstructors && (
               <>
                 <li>
-                  <NavLink to="/dashboard/studentHome">Student Home</NavLink>
+                  <NavLink to="/dashboard/studentHome"><FaHome /> Student Home</NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/mySelectedClass">
