@@ -4,15 +4,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 const SocialLogin = () => {
   const { googleSignIn, setLoading } = useAuth();
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  // const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   // handle google Sign in
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
+        
         axios
           .post("http://localhost:5000/users", {
             name: loggedInUser.displayName,
@@ -21,13 +22,12 @@ const SocialLogin = () => {
             role: "student",
           })
           .then((data) => {
-            if (data.data.insertedId) {
-              setLoading(false);
-            }
+            console.log(data.data)
+            navigate(from, { replace: true });
           })
-          .catch(error=>{
-            console.log(error.message)
-          })
+          .catch((error) => {
+            console.log(error.message);
+          });
       })
       .catch((error) => {
         console.log(error.message);
