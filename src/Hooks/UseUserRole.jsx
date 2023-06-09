@@ -4,7 +4,7 @@ import axios from "axios";
 
 const UseUserRole = () => {
   const { user, loading } = useAuth();
-  const { data: userRole = '', isLoading: roleLoading } = useQuery({
+  const { data: userRole, isLoading: roleLoading } = useQuery({
     queryKey: ["user-role", user?.email],
     enabled: !loading && !!user?.email,
     queryFn: async () => {

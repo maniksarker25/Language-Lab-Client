@@ -63,7 +63,7 @@ const ManageUsers = () => {
                 <td className="flex gap-2">
                   <button
                     onClick={() => handleMakeAdmin(user)}
-                    className={user.role == 'admin'?'bg-orange-200 px-2 py-1 font-semibold':"primary-btn px-2 py-1"}
+                    className={user.role === 'admin' || user.role === 'instructor'?'bg-orange-200 px-2 py-1 font-semibold':"primary-btn px-2 py-1"}
                     disabled={user.role === 'admin'}
 
                   >
@@ -71,7 +71,7 @@ const ManageUsers = () => {
                   </button>
                   <button 
                     onClick={() => handleMakeInstructor(user)}
-                    className={user.role == 'instructor'?'bg-orange-200 px-2 py-1 font-semibold':"primary-btn px-2 py-1"}
+                    className={user.role === 'admin' || user.role === 'instructor'?'bg-orange-200 px-2 py-1 font-semibold':"primary-btn px-2 py-1"}
                     disabled={user.role === 'instructor'}
                   >
                     Make Instructor

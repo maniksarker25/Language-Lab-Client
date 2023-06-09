@@ -1,15 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/UseAuth";
-import { Dialog } from "@headlessui/react";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
-import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
 
 const MyClasses = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user, loading } = useAuth();
+  const [feedback, setFeedback] = useState(null);
+
   const [isOpen, setIsOpen] = useState(false);
+  const openModal = (feedback) => {
+    setFeedback(feedback);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   const { data: myClasses = [], isLoading: classLoading } = useQuery({
     queryKey: ["my-classes", user?.email],
@@ -44,38 +53,31 @@ const MyClasses = () => {
               <tr key={myClass._id}>
                 <td>{index + 1}</td>
                 <td>{myClass.name}</td>
-                <td>{myClass.status}</td>
+                <td>
+                  <p
+                    className={
+                      myClass.status === "pending"
+                        ? "bg-orange-500 px-2 py-1 text-white"
+                        : myClass.status === "approved"
+                        ? "bg-green-500 px-2 py-1 rounded-md text-white"
+                        : "bg-red-500 px-2 py-1 rounded-md text-white"
+                    }
+                  >
+                    {myClass.status}
+                  </p>
+                </td>
                 <td>0</td>
                 <td>
                   {myClass.status === "pending" ||
                   myClass.status === "approved" ? (
                     "No Feedback"
                   ) : (
-                    <>
-                      {" "}
-                      <button
-                        onClick={() => setIsOpen(true)}
-                        className="primary-btn px-2 py-1"
-                      >
-                        See Feedback
-                      </button>
-                      <Dialog open={isOpen} onClose={() => setIsOpen(true)}>
-                        <Dialog.Panel className="fixed w-[500px] top-1/3 left-1/2 -translate-x-1/2 bg-white rounded-md shadow-xl p-8">
-                          <p className="text-xl">
-                            {myClass.feedback
-                              ? myClass.feedback
-                              : "Admin has not given any feedback"}
-                          </p>
-
-                          <button
-                            className="absolute top-2 right-2"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            <FaTimes className="text-xl" />
-                          </button>
-                        </Dialog.Panel>
-                      </Dialog>{" "}
-                    </>
+                    <button
+                      onClick={()=>openModal(myClass.feedback?myClass.feedback:'Admin has not given any feedback')}
+                      className="primary-btn px-2 py-1"
+                    >
+                      See Feedback
+                    </button>
                   )}
                 </td>
                 <th>
@@ -85,6 +87,14 @@ const MyClasses = () => {
             ))}
           </tbody>
         </table>
+        {isOpen && (
+          <div className="fixed inset-0  flex items-center justify-center z-10 shadow-xl">
+            <div className="absolute   px-16 bg-[#F6F6F6] w-1/5 p-6 rounded-lg">
+            <p>{feedback}</p>
+            <FaTimes onClick={closeModal} className="absolute top-2 text-2xl right-2 cursor-pointer"/>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

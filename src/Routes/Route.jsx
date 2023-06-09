@@ -19,11 +19,13 @@ import ManageClasses from "../Pages/AdminDashboard/ManageClasses/ManageClasses";
 import ManageUsers from "../Pages/AdminDashboard/ManageUsers/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage/>,
     children: [
       {
         path: "/",

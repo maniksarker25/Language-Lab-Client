@@ -77,7 +77,7 @@ const SignUp = () => {
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl lg:w-1/2 bg-base-100">
             <div className="card-body">
               <h1 className="text-3xl text-center text-primary font-bold">
-                Login
+                SignUp
               </h1>
               <form onSubmit={handleSubmit(handleSignUp)}>
                 <div className="form-control">
@@ -188,7 +188,7 @@ const SignUp = () => {
                 {success && <p className="text-green-600">{success}</p>}
                 <div className="form-control mt-6">
                   <input
-                    className="primary-btn py-2"
+                    className="primary-btn py-2 cursor-pointer"
                     type="submit"
                     value="SignUp"
                   />
