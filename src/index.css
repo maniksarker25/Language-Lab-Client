@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .primary-btn {
-  @apply bg-[#FF7350] text-white font-semibold  rounded-md cursor-pointer hover:bg-[#125875] duration-500 transition;
+  @apply bg-[#FF7350] text-white font-semibold  rounded-md  hover:bg-[#125875] duration-500 transition;
 }
 .active {
   @apply font-semibold text-xl tracking-wide text-[#FF7350] transition-colors duration-200 hover:text-[#125875];

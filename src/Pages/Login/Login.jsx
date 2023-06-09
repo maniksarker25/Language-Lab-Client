@@ -104,7 +104,7 @@ const Login = () => {
                 {success && <p className="text-green-600">{success}</p>}
                 <div className="form-control mt-6">
                   <input
-                    className="primary-btn py-2"
+                    className="primary-btn py-2 cursor-pointer"
                     type="submit"
                     value="Login"
                   />
