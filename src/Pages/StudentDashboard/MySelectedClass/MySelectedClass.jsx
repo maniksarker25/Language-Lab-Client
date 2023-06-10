@@ -3,17 +3,19 @@ import UseSelectedClasses from "../../../Hooks/UseSelectedClasses";
 import { FaTrashAlt } from "react-icons/fa";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const MySelectedClass = () => {
+    const [axiosSecure]= useAxiosSecure();
     const [selectedClasses,refetch,selectedClassesLoading] = UseSelectedClasses();
     // console.log(selectedClasses)
 
     // handle delete 
-    const handleDelete = (item) => {
+    const handleDelete = (id) => {
         Swal.fire({
           title: "Are you sure?",
-          text: ` Do you want to delete ${item.name}`,
+          text: ` Do you want to delete this Class`,
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
@@ -21,11 +23,11 @@ const MySelectedClass = () => {
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            const 
+            axiosSecure.delete(`http://localhost:5000/delete-class/${id}`)
             .then(data=>{
-                if(data.deletedCount > 0){
+                if(data.data.deletedCount > 0){
                     refetch();
-                    Swal.fire("Deleted!", "Your Item Has Been Deleted.", "success");
+                    Swal.fire("Deleted!", "Your Class Has Been Deleted.", "success");
                 }
             })
     
