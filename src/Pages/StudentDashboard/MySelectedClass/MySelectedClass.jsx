@@ -5,7 +5,6 @@ import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router-dom";
 import UseClasses from "../../../Hooks/UseClasses";
 
 const MySelectedClass = () => {
@@ -13,10 +12,9 @@ const MySelectedClass = () => {
   const [classes] = UseClasses();
   const [selectedClasses, refetch, selectedClassesLoading] =
     UseSelectedClasses();
-  const navigate = useNavigate();
   // console.log(selectedClasses)
 
-  // handle delete
+  // handle delete-----------
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -39,7 +37,6 @@ const MySelectedClass = () => {
       }
     });
   };
-
 
   // handle go for payment
   const handleGoForPayment = (selectedClass) => {
@@ -68,47 +65,53 @@ const MySelectedClass = () => {
       <h1 className="text-4xl font-bold text-center mt-20">
         My Selected Classes
       </h1>
-      <div className="overflow-x-auto w-10/12 mx-auto ">
-        <table className="table table-zebra mt-24">
-          <thead>
-            <tr className="uppercase">
-              <th>SL</th>
-              <th>Class Image</th>
-              <th>Class Name</th>
-              <th>Price</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {selectedClasses.map((selectedClass, index) => (
-              <tr key={selectedClass._id}>
-                <td>{index + 1}</td>
-                <td>
-                  <img
-                    className="w-10 h-10 rounded-md"
-                    src={selectedClass.image}
-                    alt=""
-                  />
-                </td>
-                <td>{selectedClass.name}</td>
-                <td>${selectedClass.price}</td>
-                <td className="flex gap-6 items-center">
-                  <FaTrashAlt
-                    onClick={() => handleDelete(selectedClass._id)}
-                    className="text-red-600 text-2xl cursor-pointer"
-                  />
-                  <button
-                    onClick={() => handleGoForPayment(selectedClass)}
-                    className="bg-[#FF7350]  font-semibold rounded-md text-white px-4 py-2"
-                  >
-                    Pay
-                  </button>
-                </td>
+      {selectedClasses.length === 0 ? (
+        <h2 className="text-3xl mt-16 text-center font-semibold">
+          You Have Not Select Any Class
+        </h2>
+      ) : (
+        <div className="overflow-x-auto w-10/12 mx-auto ">
+          <table className="table table-zebra mt-24">
+            <thead>
+              <tr className="uppercase">
+                <th>SL</th>
+                <th>Class Image</th>
+                <th>Class Name</th>
+                <th>Price</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {selectedClasses.map((selectedClass, index) => (
+                <tr key={selectedClass._id}>
+                  <td>{index + 1}</td>
+                  <td>
+                    <img
+                      className="w-10 h-10 rounded-md"
+                      src={selectedClass.image}
+                      alt=""
+                    />
+                  </td>
+                  <td>{selectedClass.name}</td>
+                  <td>${selectedClass.price}</td>
+                  <td className="flex gap-6 items-center">
+                    <FaTrashAlt
+                      onClick={() => handleDelete(selectedClass._id)}
+                      className="text-red-600 text-2xl cursor-pointer"
+                    />
+                    <button
+                      onClick={() => handleGoForPayment(selectedClass)}
+                      className="bg-[#FF7350]  font-semibold rounded-md text-white px-4 py-2"
+                    >
+                      Pay
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

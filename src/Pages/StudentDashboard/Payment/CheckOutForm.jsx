@@ -16,10 +16,12 @@ const CheckOutForm = ({price,paymentClass}) => {
 
   //
   useEffect(() => {
-      axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-        console.log(res.data.clientSecret);
-        setClientSecret(res.data.clientSecret);
-      });
+      if(price > 0){
+        axiosSecure.post("/create-payment-intent", { price }).then((res) => {
+            console.log(res.data.clientSecret);
+            setClientSecret(res.data.clientSecret);
+          });
+      }
 
   }, [price, axiosSecure]);
 
@@ -64,11 +66,13 @@ const CheckOutForm = ({price,paymentClass}) => {
       setTransactionId(paymentIntent.id);
       // save payment in database
       const payment = {
-        email: user?.email,
+        studentEmail: user?.email,
         transactionId: paymentIntent.id,
         price,
         date: new Date(),
         className:paymentClass.name,
+        classImage:paymentClass.image,
+        instructorName:paymentClass.instructorName,
         classId : paymentClass.classId,
         selectedClassId : paymentClass._id
       };
@@ -116,7 +120,7 @@ const CheckOutForm = ({price,paymentClass}) => {
         />
         <div className="text-center">
           <button
-            className="bg-[#D1A054] text-white cursor-pointer font-semibold px-20 py-3 mt-20 "
+            className="bg-[#FF7350] text-white cursor-pointer font-semibold px-20 py-3 mt-20 "
             type="submit"
             disabled={!stripe || !clientSecret || processing}
           >
