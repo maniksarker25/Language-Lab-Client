@@ -1,10 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import loginImg from "../../assets/login/login.jpg";
 import { FaEye } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../Providers/AuthProvider";
 import useAuth from "../../Hooks/UseAuth";
 import Swal from "sweetalert2";
 
@@ -14,7 +13,7 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   // const {signUp,updateUserProfile} = useAuth();
-  const {signUp,updateUserProfile,logOut} = useAuth();
+  const {signUp,updateUserProfile} = useAuth();
   const navigate = useNavigate();
   const {
     register,

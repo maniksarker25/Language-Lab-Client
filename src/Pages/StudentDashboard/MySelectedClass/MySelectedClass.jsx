@@ -6,15 +6,17 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import UseClasses from "../../../Hooks/UseClasses";
+import { useNavigate } from "react-router-dom";
 
 const MySelectedClass = () => {
   const [axiosSecure] = useAxiosSecure();
   const [classes] = UseClasses();
   const [selectedClasses, refetch, selectedClassesLoading] =
     UseSelectedClasses();
+  const navigate = useNavigate();
   // console.log(selectedClasses)
 
-  // handle delete-----------
+  // handle delete
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",

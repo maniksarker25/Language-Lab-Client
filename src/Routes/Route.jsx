@@ -20,6 +20,7 @@ import ManageUsers from "../Pages/AdminDashboard/ManageUsers/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import StudentRoute from "./StudentRoute";
 
 export const router = createBrowserRouter([
   {
@@ -55,23 +56,23 @@ export const router = createBrowserRouter([
     children:[
       {
         path:'studentHome',
-        element:<StudentHome/>
+        element:<StudentRoute><StudentHome/></StudentRoute>
       },
       {
         path:'mySelectedClass',
-        element:<MySelectedClass></MySelectedClass>
+        element:<StudentRoute><MySelectedClass></MySelectedClass></StudentRoute>
       },
       {
         path:'myEnrolledClass',
-        element:<MyEnrolledClass/>
+        element:<StudentRoute><MyEnrolledClass/></StudentRoute>
       },
       {
         path:'payment/:id',
-        element:<Payment/>
+        element:<StudentRoute><Payment/></StudentRoute>
       },
       {
         path:'paymentHistory',
-        element:<PaymentHistory/>
+        element:<StudentRoute><PaymentHistory/></StudentRoute>
       },
       // instructor routes
       {

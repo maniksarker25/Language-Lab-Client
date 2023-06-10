@@ -1,4 +1,4 @@
-import { FaAd, FaBars, FaBookReader, FaEdit, FaFile, FaHome, FaUserGraduate, FaUsers } from "react-icons/fa";
+import { FaAd, FaBars, FaBookReader, FaEdit, FaFile, FaFolder, FaFolderOpen, FaHistory, FaHome, FaUserGraduate, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import UseUserRole from "../Hooks/UseUserRole";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
@@ -58,17 +58,17 @@ const DashBoard = () => {
                 </li>
                 <li>
                   <NavLink to="/dashboard/mySelectedClass">
-                    My Selected Class
+                   <FaFolderOpen/> My Selected Class
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/myEnrolledClass">
-                    My Enrolled Class
+                   <FaFolder/> My Enrolled Class
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/paymentHistory">
-                    Payment History
+                   <FaHistory/> Payment History
                   </NavLink>
                 </li>
               </>

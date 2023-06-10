@@ -30,12 +30,12 @@ const ClassCard = ({ approvedClass }) => {
         .then((data) => {
           if (data.data.insertedId) {
             // refetch data to update cart item number
-            toast.success("Successfully Added In Cart!");
+            toast.success("Successfully Added Class!");
           }
         });
     } else {
       Swal.fire({
-        title: "Please Login First To Add To Cart!",
+        title: "Please Login First To Add Class!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -49,7 +49,7 @@ const ClassCard = ({ approvedClass }) => {
     }
   };
   return (
-    <div className="card w-full bg-base-100 shadow-xl">
+    <div className={availableSeat === 0?"card w-full bg-base-100 shadow-xl bg-red-500":"card w-full bg-base-100 shadow-xl"}>
       <figure>
         <img className="h-72 w-full" src={image} alt="Shoes" />
       </figure>
@@ -61,9 +61,9 @@ const ClassCard = ({ approvedClass }) => {
         <div className="card-actions justify-end">
           <button
             onClick={() => handleSelect(approvedClass)}
-            disabled={user && userRole !== "student"}
+            disabled={user && userRole !== "student" || availableSeat === 0}
             className={
-              user && userRole !== "student"
+              user && userRole !== "student" || availableSeat === 0
                 ? "bg-orange-200 rounded-md px-6 py-3 font-semibold"
                 : "primary-btn px-8 py-3"
             }

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Lato", sans-serif;
+  font-family: "Raleway", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
 .primary-btn {
   @apply bg-[#FF7350] text-white font-semibold  rounded-md  hover:bg-[#125875] duration-500 transition;
 }
