@@ -53,8 +53,7 @@ const SignUp = () => {
                   showConfirmButton: false,
                   timer: 1500,
                 });
-                logOut()
-                navigate("/login");
+                navigate("/");
               }
             });
         })

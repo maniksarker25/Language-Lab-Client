@@ -34,10 +34,10 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-  //logOut 
-  const logOut = () =>{
-     return signOut(auth)
-  }
+  //logOut
+  const logOut = () => {
+    return signOut(auth);
+  };
   // update user profile
   const updateUserProfile = (name, photoURL) => {
     return updateProfile(auth.currentUser, {
@@ -46,24 +46,23 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-
   // find current user
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser)
+      console.log(currentUser);
       // setLoading(false);
-      if(currentUser && currentUser.email){
-        axios.post('http://localhost:5000/jwt',{email:currentUser.email})
-        .then(data=>{
-          // console.log(data.data.token)
-          localStorage.setItem('access-token',data.data.token)
-          setLoading(false)
-        })
-      }
-      else{
-        localStorage.removeItem('access-token')
-        setLoading(false)
+      if (currentUser && currentUser?.email) {
+        axios
+          .post("http://localhost:5000/jwt", { email: currentUser?.email })
+          .then((data) => {
+            // console.log(data.data.token)
+            localStorage.setItem("access-token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
       }
     });
 
@@ -80,7 +79,7 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     logOut,
     loading,
-    setLoading
+    setLoading,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

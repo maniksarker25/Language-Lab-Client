@@ -5,12 +5,15 @@ import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import UseClasses from "../../../Hooks/UseClasses";
 
 const MySelectedClass = () => {
   const [axiosSecure] = useAxiosSecure();
+  const [classes] = UseClasses();
   const [selectedClasses, refetch, selectedClassesLoading] =
     UseSelectedClasses();
+  const navigate = useNavigate();
   // console.log(selectedClasses)
 
   // handle delete
@@ -37,15 +40,34 @@ const MySelectedClass = () => {
     });
   };
 
+
+  // handle go for payment
+  const handleGoForPayment = (selectedClass) => {
+    // console.log(selectedClass.classId);
+    // find my selected class in all classes----------------
+    const matchClass = classes.find((cls) => cls._id === selectedClass.classId);
+    if (matchClass.availableSeat < 1) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Seat is not Available!",
+      });
+    } else {
+      navigate(`/dashboard/payment/${selectedClass._id}`);
+    }
+  };
+
   if (selectedClassesLoading) {
     return <LoadingSpinner />;
   }
   return (
     <div>
-         <Helmet>
+      <Helmet>
         <title>LanguageLab-MySelectedClasses</title>
       </Helmet>
-      <h1 className="text-4xl font-bold text-center mt-20">My Selected Classes</h1>
+      <h1 className="text-4xl font-bold text-center mt-20">
+        My Selected Classes
+      </h1>
       <div className="overflow-x-auto w-10/12 mx-auto ">
         <table className="table table-zebra mt-24">
           <thead>
@@ -75,9 +97,12 @@ const MySelectedClass = () => {
                     onClick={() => handleDelete(selectedClass._id)}
                     className="text-red-600 text-2xl cursor-pointer"
                   />
-                  <Link to='/dashboard/payment'><button className="bg-[#FF7350]  font-semibold rounded-md text-white px-4 py-2">
+                  <button
+                    onClick={() => handleGoForPayment(selectedClass)}
+                    className="bg-[#FF7350]  font-semibold rounded-md text-white px-4 py-2"
+                  >
                     Pay
-                  </button></Link>
+                  </button>
                 </td>
               </tr>
             ))}
