@@ -35,7 +35,7 @@ const Navbar = () => {
       </NavLink>
       {user &&(
         <NavLink
-        to={userRole === 'admin' ? '/dashboard/adminHome' : (userRole === 'instructor' ? '/dashboard/addAClass' : '/dashboard/studentHome')}
+        to={userRole === 'admin' ? '/dashboard/adminHome' : (userRole === 'instructor' ? '/dashboard/addAClass' : '/dashboard/mySelectedClass')}
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
           <li>Dashboard</li>
