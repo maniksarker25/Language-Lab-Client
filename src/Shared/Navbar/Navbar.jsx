@@ -2,12 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/UseAuth";
 import UseUserRole from "../../Hooks/UseUserRole";
 import { FaGraduationCap } from "react-icons/fa";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const Navbar = () => {
-  const {user} = useAuth();
-  // console.log(user)
-  const {logOut } = useAuth();
-  const loading = false;
+  const {user,loading,logOut} = useAuth();
+
 
   const handleLogOut = () =>{
     logOut();
@@ -44,6 +43,11 @@ const Navbar = () => {
       )}
     </>
   );
+
+
+  if(loading){
+    return <LoadingSpinner/>
+  }
   return (
     <div className="bg-white">
       <div className="navbar container">

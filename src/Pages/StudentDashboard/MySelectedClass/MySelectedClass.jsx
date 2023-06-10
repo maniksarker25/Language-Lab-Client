@@ -45,7 +45,7 @@ const MySelectedClass = () => {
          <Helmet>
         <title>LanguageLab-MySelectedClasses</title>
       </Helmet>
-      <h1 className="text-4xl font-bold text-center mt-20">Selected Classes</h1>
+      <h1 className="text-4xl font-bold text-center mt-20">My Selected Classes</h1>
       <div className="overflow-x-auto w-10/12 mx-auto ">
         <table className="table table-zebra mt-24">
           <thead>

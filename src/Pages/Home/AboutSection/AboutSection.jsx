@@ -1,5 +1,6 @@
 import img1 from "../../../assets/about/aboutImg1.jpg";
 import img2 from "../../../assets/about/aboutImg2.png";
+import { FaGraduationCap } from "react-icons/fa";
 
 const AboutSection = () => {
   return (
@@ -24,8 +25,8 @@ const AboutSection = () => {
           />
         </div>
         <div className="lg:w-6/12">
-          <p className="font-bold text-xl text-[#FF7350]">
-            About Our Language Lab
+          <p className="font-bold text-xl flex items-center gap-2 text-[#FF7350]">
+           <FaGraduationCap className="text-2xl"/> About Our Language Lab
           </p>
           <h3 className="text-3xl lg:text-5xl font-semibold my-4 ">
             A Few Words About the Language Lab

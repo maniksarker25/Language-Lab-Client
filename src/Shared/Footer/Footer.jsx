@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaMapMarkerAlt, FaTwitter,FaViber } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaMapMarkerAlt, FaTwitter,FaViber,FaGraduationCap } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
             <h2 className="text-2xl">About Us</h2>
             <hr />
             <div className="mt-4">
-              <h4 className="text-xl my-4">Language Lab</h4>
+              <h4 className="text-2xl my-4 flex gap-2 items-center"><FaGraduationCap className="text-3xl"/>Language Lab</h4>
               <p>
                 {" "}
                 We are dedicated to helping individuals enhance <br /> their
@@ -64,7 +64,7 @@ const Footer = () => {
       </div>
       <div className="bg-[#FF7350]">
        <div className="max-w-screen-xl mx-auto flex justify-between text-white p-4 lg:p-6">
-       <h1 className="text-2xl font-bold hidden lg:block">Language Lab</h1>
+       <h1 className="text-2xl font-bold hidden lg:flex items-center gap-2"><FaGraduationCap className="text-4xl"/> Language Lab</h1>
         <p className="lg:text-xl font-semibold">Copyright © Qeducato 2023 . All rights reserved.</p>
        </div>
       </div>
