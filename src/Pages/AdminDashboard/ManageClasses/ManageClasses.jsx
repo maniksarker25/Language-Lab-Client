@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
+import { Helmet } from "react-helmet-async";
 
 const ManageClasses = () => {
   const [classes, refetch, classesLoading] = UseClasses();
@@ -65,6 +66,9 @@ const ManageClasses = () => {
   }
   return (
     <div>
+       <Helmet>
+        <title>LanguageLab-ManageClasses</title>
+      </Helmet>
       <h1 className="text-5xl font-semibold text-center my-16">
         Manage Classes
       </h1>

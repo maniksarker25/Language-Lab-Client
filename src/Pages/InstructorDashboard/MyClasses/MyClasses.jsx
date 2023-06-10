@@ -4,6 +4,7 @@ import useAuth from "../../../Hooks/UseAuth";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const MyClasses = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -35,6 +36,9 @@ const MyClasses = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>LanguageLab-MyClasses</title>
+      </Helmet>
       <h1 className="text-5xl font-semibold text-center my-16">My Classes</h1>
       <div className="overflow-x-auto w-10/12 mx-auto ">
         <table className="table table-zebra">

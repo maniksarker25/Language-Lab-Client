@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/UseAuth";
 import UseUserRole from "../../Hooks/UseUserRole";
+import { FaGraduationCap } from "react-icons/fa";
 
 const Navbar = () => {
   const {user} = useAuth();
@@ -73,7 +74,7 @@ const Navbar = () => {
           </div>
           <Link to="/">
             <div>
-              <h3 className="lg:text-2xl uppercase  font-semibold"><span className="text-secondary ">Language</span> <span className="text-primary">Lab</span></h3>
+              <h3 className="lg:text-2xl uppercase flex items-center gap-2 font-semibold"> <FaGraduationCap className="text-4xl text-[#FF7350] "/><span className="text-secondary ">Language</span> <span className="text-primary">Lab</span></h3>
             </div>
           </Link>
         </div>

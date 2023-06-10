@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import UseUsers from "../../../Hooks/UseUsers";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
   const [users, refetch] = UseUsers();
@@ -41,6 +42,9 @@ const ManageUsers = () => {
   };
   return (
     <div>
+       <Helmet>
+        <title>LanguageLab-ManageUsers</title>
+      </Helmet>
       <h1 className="text-5xl font-semibold text-center my-16">Manage Users</h1>
       <div className="overflow-x-auto w-10/12 mx-auto">
         <table className="table table-zebra">
