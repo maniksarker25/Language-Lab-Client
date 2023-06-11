@@ -1,4 +1,3 @@
-
 import UseClasses from "../../../Hooks/UseClasses";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useState } from "react";
@@ -61,18 +60,19 @@ const ManageClasses = () => {
     });
   };
 
-  if(classesLoading){
-    return <LoadingSpinner/>
+  if (classesLoading) {
+    return <LoadingSpinner />;
   }
   return (
     <div>
-       <Helmet>
+      <Helmet>
         <title>LanguageLab-ManageClasses</title>
       </Helmet>
+      <div className="w-10/12 mx-auto">
       <h1 className="text-5xl font-semibold text-center my-16">
         Manage Classes
       </h1>
-      <div className="overflow-x-auto ">
+      <div className="overflow-x-auto">
         <table className="table table-zebra">
           <thead>
             <tr className="uppercase">
@@ -140,7 +140,7 @@ const ManageClasses = () => {
                       singleClass.feedback || singleClass.status === "pending"
                     }
                     // onClick={() => setIsOpen(true)}
-                    onClick={()=>openModal(singleClass._id)}
+                    onClick={() => openModal(singleClass._id)}
                     className={
                       singleClass.feedback || singleClass.status === "pending"
                         ? "bg-orange-200 px-2 rounded-lg py-1 font-semibold"
@@ -165,14 +165,13 @@ const ManageClasses = () => {
                   required
                   placeholder="Write Feedback"
                 ></textarea>
-                
 
                 <div className="flex justify-between">
-                <input
-                  className="primary-btn cursor-pointer px-4 py-2"
-                  type="submit"
-                  value="Send Feedback"
-                />
+                  <input
+                    className="primary-btn cursor-pointer px-4 py-2"
+                    type="submit"
+                    value="Send Feedback"
+                  />
                   <button
                     onClick={closeModal}
                     className="bg-gray-500 rounded-md font-semibold hover:bg-gray-700 text-white py-2 px-4"
@@ -184,6 +183,7 @@ const ManageClasses = () => {
             </div>
           </div>
         )}
+      </div>
       </div>
     </div>
   );

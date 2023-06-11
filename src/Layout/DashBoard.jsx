@@ -9,8 +9,8 @@ const DashBoard = () => {
     return <LoadingSpinner/>
   }
   return (
-    <div className="max-w-screen-xl mx-auto">
-      <div className="drawer lg:drawer-open">
+      <div className="max-w-screen-xl mx-auto">
+        <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content ">
           <Outlet></Outlet>
@@ -23,7 +23,7 @@ const DashBoard = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-52 md:w-72 text-xl h-full bg-[#125875] text-white">
+          <ul className="menu p-4 w-50  md:w-72 text-xl h-full bg-[#125875] text-white">
             <div className="ps-4 mb-12">
               <h3 className="text-3xl font-bold">LANGUAGE LAB</h3>
             </div>
@@ -89,8 +89,10 @@ const DashBoard = () => {
           </ul>
         </div>
       </div>
-    </div>
+      </div>
   );
 };
 
 export default DashBoard;
+
+

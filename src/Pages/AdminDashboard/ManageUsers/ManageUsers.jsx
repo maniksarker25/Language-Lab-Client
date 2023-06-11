@@ -45,9 +45,10 @@ const ManageUsers = () => {
        <Helmet>
         <title>LanguageLab-ManageUsers</title>
       </Helmet>
+      <div className="w-10/12 mx-auto">
       <h1 className="text-5xl font-semibold text-center my-16">Manage Users</h1>
-      <div className="overflow-x-auto w-10/12 mx-auto">
-        <table className="table table-zebra">
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
           <thead>
             <tr>
               <th>SL</th>
@@ -85,6 +86,7 @@ const ManageUsers = () => {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   );

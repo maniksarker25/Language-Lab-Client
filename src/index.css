@@ -28,3 +28,10 @@ body {
 .container{
   @apply max-w-screen-xl mx-auto
 }
+
+
+/* @media (max-width: 500px) {
+  .drawer{
+    grid: none !important;
+  }
+} */

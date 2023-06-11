@@ -86,7 +86,7 @@ const Banner = () => {
           </div>
         </div>
       </div> */}
-      <div className="absolute bottom-0 left-12 lg:left-32 p-4  text-white z-10 ">
+      <div className="absolute bottom-0 left-6 lg:left-32 p-8  text-white z-10 ">
         <div className="max-w-screen-xl mx-auto">
           <h4 className=" text-xl lg:text-2xl uppercase">
             Welcome to Language Lab
