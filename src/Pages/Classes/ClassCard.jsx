@@ -49,7 +49,7 @@ const ClassCard = ({ approvedClass }) => {
     }
   };
   return (
-    <div className={availableSeat === 0?"card w-full bg-base-100 shadow-xl bg-red-500":"card w-full bg-base-100 shadow-xl"}>
+    <div className={availableSeat === 0?"card w-full  shadow-xl bg-red-500":"card w-full bg-base-100 shadow-xl"}>
       <figure>
         <img className="h-72 w-full" src={image} alt="Shoes" />
       </figure>

@@ -17,7 +17,10 @@ const Classes = () => {
             <Helmet>
         <title>LanguageLab-Classes</title>
       </Helmet>
-            <h1 className="text-4xl text-center font-semibold mt-12">Our All Approved Classes</h1>
+           <div className="text-center mt-16">
+            <p className="font-bold text-primary">Explore Our All Approved Classes</p>
+           <h1 className="text-5xl font-semibold mt-2">Our All Classes</h1>
+           </div>
             <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
             {
                 approvedClasses.map(approvedClass=><ClassCard key={approvedClass._id} approvedClass={approvedClass}></ClassCard>)
