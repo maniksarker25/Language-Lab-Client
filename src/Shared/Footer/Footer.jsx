@@ -41,7 +41,7 @@ const Footer = () => {
           <div className="my-6 lg:my-0">
             <h2 className="text-2xl ">LEGAL</h2>
             <hr />
-            <div className="space-y-3 text-xl mt-6">
+            <div className="space-y-3 text-xl mt-4">
             <p><Link>Terms of use</Link></p>
             <p><Link>Privacy policy</Link></p>
             <p><Link>Cookie policy</Link></p>
