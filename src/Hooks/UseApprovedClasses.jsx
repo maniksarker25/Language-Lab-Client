@@ -5,7 +5,7 @@ const UseApprovedClasses = () => {
     const {data: approvedClasses = [], isLoading: approvedClassesLoading} = useQuery({
         queryKey:['approved-classes'],
         queryFn: async ()=>{
-            const res = await axios.get('http://localhost:5000/approved-classes?status=approved')
+            const res = await axios.get('https://language-lab-server.vercel.app/approved-classes?status=approved')
             return res.data;
         }
     })

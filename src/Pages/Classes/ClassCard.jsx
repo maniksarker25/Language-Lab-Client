@@ -26,7 +26,7 @@ const ClassCard = ({ approvedClass }) => {
         studentEmail: user?.email,
       };
       axiosSecure
-        .post("http://localhost:5000/select-class", { selectClass })
+        .post("https://language-lab-server.vercel.app/select-class", { selectClass })
         .then((data) => {
           if (data.data.insertedId) {
             // refetch data to update cart item number

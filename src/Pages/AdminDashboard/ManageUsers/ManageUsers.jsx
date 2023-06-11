@@ -10,7 +10,7 @@ const ManageUsers = () => {
 
   // handle make admin
   const handleMakeAdmin = (user) => {
-    axiosSecure.patch(`http://localhost:5000/users/admin/${user._id}`)
+    axiosSecure.patch(`https://language-lab-server.vercel.app/users/admin/${user._id}`)
       .then((data) => {
         if (data.data.modifiedCount > 0) {
           refetch();
@@ -26,7 +26,7 @@ const ManageUsers = () => {
   };
   // handle make instructor----
   const handleMakeInstructor = (user) => {
-    axiosSecure.patch(`http://localhost:5000/users/instructor/${user._id}`)
+    axiosSecure.patch(`https://language-lab-server.vercel.app/users/instructor/${user._id}`)
       .then((data) => {
         if (data.data.modifiedCount > 0) {
           refetch();

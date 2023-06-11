@@ -9,7 +9,7 @@ const UseUserRole = () => {
     enabled: !loading && !!user?.email,
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/users/check-role/${user?.email}`
+        `https://language-lab-server.vercel.app/users/check-role/${user?.email}`
       );
       return res.data.role;
     },

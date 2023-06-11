@@ -11,7 +11,7 @@ const UseSelectedClasses = () => {
         queryKey:['selectedClasses', user?.email],
         enabled: !!user?.email && !!token,
         queryFn: async()=>{
-            const res = await axiosSecure(`http://localhost:5000/selected-classes?email=${user?.email}`)
+            const res = await axiosSecure(`https://language-lab-server.vercel.app/selected-classes?email=${user?.email}`)
             return res.data;
         }
     })

@@ -36,7 +36,7 @@ const SignUp = () => {
         updateUserProfile(data.name,data.photoURL)
         .then(() => {
           const savedUser = {name:data.name, email:data.email, photoUrl:data.photoURL, role:'student'}
-          fetch("http://localhost:5000/users",{
+          fetch("https://language-lab-server.vercel.app/users",{
             method:'POST',
             headers:{'content-type':'application/json'},
             body:JSON.stringify(savedUser)

@@ -29,7 +29,7 @@ const MySelectedClass = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
-          .delete(`http://localhost:5000/delete-class/${id}`)
+          .delete(`https://language-lab-server.vercel.app/delete-class/${id}`)
           .then((data) => {
             if (data.data.deletedCount > 0) {
               refetch();

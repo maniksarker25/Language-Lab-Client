@@ -13,7 +13,7 @@ const MyEnrolledClass = () => {
       enabled: !loading && !!user?.email,
       queryFn: async () => {
         const res = await axiosSecure(
-          `http://localhost:5000/enrolled-classes?email=${user?.email}`
+          `https://language-lab-server.vercel.app/enrolled-classes?email=${user?.email}`
         );
         return res.data;
       },

@@ -39,8 +39,13 @@ const Footer = () => {
             </div>
           </div>
           <div className="my-6 lg:my-0">
-            <h2 className="text-2xl ">Latest Post</h2>
+            <h2 className="text-2xl ">LEGAL</h2>
             <hr />
+            <div className="space-y-3 text-xl mt-6">
+            <p><Link>Terms of use</Link></p>
+            <p><Link>Privacy policy</Link></p>
+            <p><Link>Cookie policy</Link></p>
+            </div>
           </div>
           <div>
             <h2 className="text-2xl">Contact Us</h2>

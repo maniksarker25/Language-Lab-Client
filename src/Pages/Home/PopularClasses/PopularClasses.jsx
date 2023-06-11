@@ -26,7 +26,7 @@ const PopularClasses = () => {
                                 <p >Total Enrolled: {approvedClass?.totalEnrolled || 0}</p>
                                 </div>
                                 <div className="flex justify-between mt-8">
-                                    <button className="flex cursor-pointer items-center gap-2 font-bold text-[#FF7350]">Select<FaArrowRight/></button>
+                                    <button className="flex cursor-pointer items-center gap-2 font-bold text-[#FF7350]">See Details<FaArrowRight/></button>
                                     <img src={bookIcon} alt="" />
                                 </div>
                             </div>

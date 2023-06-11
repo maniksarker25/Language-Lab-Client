@@ -12,7 +12,7 @@ const PaymentHistory = () => {
     enabled: !loading && !!user?.email,
     queryFn: async () => {
       const res = await axiosSecure(
-        `http://localhost:5000/payment-history?email=${user?.email}`
+        `https://language-lab-server.vercel.app/payment-history?email=${user?.email}`
       );
       return res.data;
     },

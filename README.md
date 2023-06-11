@@ -2,7 +2,7 @@
 * Make a Language Lab  Website with react , react router dom
 
 * ## Live link
-* Hosted in Firebase => [DreamRideToy](https://dream-ride-toy.web.app/)
+* Hosted in Firebase => [Language Lab](https://language-lab-cd89d.web.app/)
 
 
 * ## Resource And Credits
