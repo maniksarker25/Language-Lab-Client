@@ -11,12 +11,12 @@ const Instructors = () => {
     return <LoadingSpinner />;
   }
   return (
-    <div>
+    <div className="p-4 lg:p-0">
       <Helmet>
         <title>LanguageLab-Instructors</title>
       </Helmet>
 
-      <div className="text-center  mt-20">
+      <div className="text-center  mt-20 ">
         <p className="text-primary font-bold">Our All Instructor Here</p>
         <h1 className=" font-semibold text-5xl">Our Instructors</h1>
       </div>

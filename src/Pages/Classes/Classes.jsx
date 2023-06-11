@@ -13,7 +13,7 @@ const Classes = () => {
         return <LoadingSpinner/>
     }
     return (
-        <div>
+        <div className="p-4 lg:p-0">
             <Helmet>
         <title>LanguageLab-Classes</title>
       </Helmet>
