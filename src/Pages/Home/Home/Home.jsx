@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import AboutSection from "../AboutSection/AboutSection";
 import Banner from "../Banner/Banner";
 import TopInstructors from "../TopInstructors/TopInstructors";
+import PopularClasses from "../PopularClasses/PopularClasses";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       </Helmet>
      <Banner></Banner>
      <AboutSection/>
+     <PopularClasses/>
      <TopInstructors/>
     </div>
   );

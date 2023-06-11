@@ -34,7 +34,7 @@ const AddAClass = () => {
             availableSeat,
             price,
             image: imgURL,
-            status:'pending'
+            status:'pending',
           };
           console.log(newClass);
           axiosSecure.post("/class", newClass).then((data) => {
