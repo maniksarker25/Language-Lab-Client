@@ -47,7 +47,7 @@ const MyClasses = () => {
               <th>SL</th>
               <th>Class Name</th>
               <th>Status</th>
-              <th>Enroll </th>
+              <th>Total Enrolled </th>
               <th>Feedback</th>
               <th>Action</th>
             </tr>
@@ -61,7 +61,7 @@ const MyClasses = () => {
                   <p
                     className={
                       myClass.status === "pending"
-                        ? "bg-orange-500 px-2 py-1 text-white"
+                        ? "bg-orange-500 px-2 py-1 rounded-md text-white"
                         : myClass.status === "approved"
                         ? "bg-green-500 px-2 py-1 rounded-md text-white"
                         : "bg-red-500 px-2 py-1 rounded-md text-white"
@@ -70,7 +70,7 @@ const MyClasses = () => {
                     {myClass.status}
                   </p>
                 </td>
-                <td>0</td>
+                <td>{myClass?.totalEnrolled || 0}</td>
                 <td>
                   {myClass.status === "pending" ||
                   myClass.status === "approved" ? (

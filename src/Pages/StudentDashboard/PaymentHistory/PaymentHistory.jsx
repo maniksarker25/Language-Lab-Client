@@ -32,7 +32,7 @@ const PaymentHistory = () => {
       </h1>
       {payments.length === 0 ? (
         <h2 className="text-3xl mt-16 text-center font-semibold">
-          You Have Not Enrolled Any Class
+          You Have Not Payment
         </h2>
       ) : (
         <div className="overflow-x-auto w-10/12 mx-auto ">

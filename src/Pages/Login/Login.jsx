@@ -15,7 +15,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const { logIn } = useAuth();
+  const { logIn ,setLoading} = useAuth();
   const {
     register,
     handleSubmit,
@@ -38,6 +38,7 @@ const Login = () => {
       .catch((error) => {
         const errorMessage = error.message;
         setError(errorMessage);
+        setLoading(false)
       });
   };
 

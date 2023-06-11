@@ -28,13 +28,13 @@ const Footer = () => {
             <div className="text-xl mt-4 lg:space-y-4 space-y-2">
               <p>
                 {" "}
-                <Link>Home</Link>
+                <Link to='/'>Home</Link>
               </p>
               <p>
-                <Link>Classes</Link>
+                <Link to='/classes'>Classes</Link>
               </p>
               <p className="mb-4">
-                <Link>Instructors</Link>
+                <Link to='/instructors'>Instructors</Link>
               </p>
             </div>
           </div>

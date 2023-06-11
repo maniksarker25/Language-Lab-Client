@@ -1,10 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import banner1 from "./../../../assets/banner/banner1.png";
 import banner2 from "../../../assets/banner/banner2.png";
-import bannerIcon1 from "../../../assets/banner/bannerIcon1.png";
-import bannerIcon2 from "../../../assets/banner/bannerIcon2.png";
-import bannerIcon3 from "../../../assets/banner/bannerIcon3.png";
-import './Banner.css'
+import banner3 from '../../../assets/banner/banner3.jpg'
 
 // Import Swiper styles
 import "swiper/css";
@@ -23,10 +20,13 @@ const Banner = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img className="h-[350px] lg:h-full w-full" src={banner1} alt="" />
+          <img className="h-[350px] lg:h-[600px] w-full" src={banner1} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img className="h-[350px] lg:h-full w-full" src={banner2} alt="" />
+          <img className="h-[350px] lg:h-[600px] w-full" src={banner2} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="h-[350px] lg:h-[600px] w-full" src={banner3} alt="" />
         </SwiperSlide>
       </Swiper>
       {/* <div className="absolute p-4 lg:p-0 xl:left-[330px] xl:right-[330px]  lg:left-[0px] lg:right-[0px] bottom-0  text-white z-10 ">
