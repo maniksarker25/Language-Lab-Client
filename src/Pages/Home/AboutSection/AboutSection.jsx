@@ -8,7 +8,7 @@ const AboutSection = () => {
       <div className="lg:flex px-4 lg:px-0 space-y-4 lg:space-y-0 gap-8">
         <div className="lg:w-3/12">
           <img
-            className="rounded-2xl border-4 h-full border-[#FF7350]"
+            className="rounded-2xl border-4  w-full h-96 object-cover md:h-full  border-[#FF7350]"
             src={img1}
             alt=""
           />
@@ -47,18 +47,22 @@ const AboutSection = () => {
 
           <div className="mt-6 flex">
             <div className="flex gap-4">
-              <p className="text-3xl  bg-[#FF7350]  rounded-full  text-white">
+             <div>
+             <p className="text-3xl p-2 bg-[#FF7350]  rounded-full  text-white">
                 01
               </p>
+             </div>
               <div>
                 <h6 className="text-2xl font-bold mb-4">Spoken English</h6>
                 <p>Most of the people learn spoken english from here</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <p className="text-3xl bg-[#FF7350]  rounded-full  text-white">
-                01
+              <div>
+              <p className="text-3xl bg-[#FF7350] p-2 rounded-full  text-white">
+                02
               </p>
+              </div>
               <div>
                 <h6 className="text-2xl font-bold mb-4">Global Student</h6>
                 <p>Consectetur adipiscing elit sed do eiusmod tem incid idunt.</p>

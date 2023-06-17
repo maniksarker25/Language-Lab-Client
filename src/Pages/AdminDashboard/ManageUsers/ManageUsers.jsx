@@ -10,7 +10,8 @@ const ManageUsers = () => {
 
   // handle make admin
   const handleMakeAdmin = (user) => {
-    axiosSecure.patch(`https://language-lab-server.vercel.app/users/admin/${user._id}`)
+    axiosSecure
+      .patch(`https://language-lab-server.vercel.app/users/admin/${user._id}`)
       .then((data) => {
         if (data.data.modifiedCount > 0) {
           refetch();
@@ -26,7 +27,10 @@ const ManageUsers = () => {
   };
   // handle make instructor----
   const handleMakeInstructor = (user) => {
-    axiosSecure.patch(`https://language-lab-server.vercel.app/users/instructor/${user._id}`)
+    axiosSecure
+      .patch(
+        `https://language-lab-server.vercel.app/users/instructor/${user._id}`
+      )
       .then((data) => {
         if (data.data.modifiedCount > 0) {
           refetch();
@@ -42,51 +46,65 @@ const ManageUsers = () => {
   };
   return (
     <div>
-       <Helmet>
+      <Helmet>
         <title>LanguageLab-ManageUsers</title>
       </Helmet>
-      <div className="w-10/12 mx-auto">
-      <h1 className="text-5xl font-semibold text-center my-16">Manage Users</h1>
-      <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
-          <thead>
-            <tr>
-              <th>SL</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr key={user._id}>
-                <th>{index + 1}</th>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td className="flex gap-2">
-                  <button
-                    onClick={() => handleMakeAdmin(user)}
-                    className={user.role === 'admin' || user.role ==='instructor'?'bg-orange-200 px-2 py-1 font-semibold':"primary-btn px-2 py-1"}
-                    disabled={user.role === 'admin' || user.role ==='instructor'}
 
-                  >
-                    Make Admin
-                  </button>
-                  <button 
-                    onClick={() => handleMakeInstructor(user)}
-                    className={user.role === 'admin' || user.role ==='instructor'?'bg-orange-200 px-2 py-1 font-semibold':"primary-btn px-2 py-1"}
-                    disabled={user.role === 'admin' || user.role ==='instructor'}
-                  >
-                    Make Instructor
-                  </button>
-                </td>
+      <div className="w-10/12 mx-auto">
+        <h1 className="text-5xl font-semibold text-center my-16">
+          Manage Users
+        </h1>
+        <div className="overflow-x-auto">
+          <table className="table table-zebra">
+            <thead>
+              <tr>
+                <th>SL</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {users.map((user, index) => (
+                <tr key={user._id}>
+                  <th>{index + 1}</th>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.role}</td>
+                  <td className="flex gap-2">
+                    <button
+                      onClick={() => handleMakeAdmin(user)}
+                      className={
+                        user.role === "admin" || user.role === "instructor"
+                          ? "bg-orange-200 px-2 py-1 font-semibold"
+                          : "primary-btn px-2 py-1"
+                      }
+                      disabled={
+                        user.role === "admin" || user.role === "instructor"
+                      }
+                    >
+                      Make Admin
+                    </button>
+                    <button
+                      onClick={() => handleMakeInstructor(user)}
+                      className={
+                        user.role === "admin" || user.role === "instructor"
+                          ? "bg-orange-200 px-2 py-1 font-semibold"
+                          : "primary-btn px-2 py-1"
+                      }
+                      disabled={
+                        user.role === "admin" || user.role === "instructor"
+                      }
+                    >
+                      Make Instructor
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

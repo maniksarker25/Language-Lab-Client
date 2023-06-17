@@ -12,11 +12,11 @@ body {
   @apply bg-[#FF7350] text-white font-semibold  rounded-md  hover:bg-[#125875] duration-500 transition;
 }
 .active {
-  @apply font-semibold text-xl tracking-wide text-[#FF7350] transition-colors duration-200 hover:text-[#125875];
+  @apply font-semibold text-xl scale-110  tracking-wide text-[#FF7350] transition-colors duration-200 hover:text-[#125875];
 }
 
 .default {
-  @apply font-semibold tracking-wide text-xl text-gray-700 transition-colors duration-200 hover:text-[#FF7350];
+  @apply font-semibold  tracking-wide text-xl text-gray-700 transition-colors duration-300 hover:text-[#FF7350];
 }
 .text-secondary{
   @apply text-[#125875]

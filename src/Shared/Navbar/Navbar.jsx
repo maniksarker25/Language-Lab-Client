@@ -4,10 +4,13 @@ import UseUserRole from "../../Hooks/UseUserRole";
 import { FaGraduationCap } from "react-icons/fa";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { useEffect, useState } from "react";
+import Profile from "../../components/Profile/Profile";
 
 const Navbar = () => {
   const { user, loading, logOut } = useAuth();
-  const [theme,setTheme] = useState(localStorage.getItem('theme')?localStorage.getItem('theme'):'light')
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
 
   const handleLogOut = () => {
     logOut();
@@ -15,24 +18,22 @@ const Navbar = () => {
   const [userRole] = UseUserRole();
   console.log(userRole);
 
-
   // handle theme -----------------
 
-  const handleToggle = (e)=>{
-    if(e.target.checked){
-      setTheme('dark')
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
     }
-    else{
-      setTheme('light')
-    }
-  }
+  };
 
-  useEffect(()=>{
-    localStorage.setItem('theme',theme);
-    const localTheme = localStorage.getItem('theme');
-    document.querySelector('html').setAttribute('data-theme', localTheme)
-  },[theme])
-  
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+
   const navItems = (
     <>
       <NavLink
@@ -103,11 +104,11 @@ const Navbar = () => {
           </div>
           <Link to="/">
             <div>
-              <h3 className="lg:text-2xl uppercase flex items-center gap-2 font-semibold">
+              <h3 className="lg:text-2xl uppercase flex items-center  gap-2 font-semibold">
                 {" "}
                 <FaGraduationCap className="text-4xl text-[#FF7350] " />
-                <span className="text-secondary hidden lg:block ">Language</span>{" "}
-                <span className="text-primary hidden lg:block">Lab</span>
+                <span className="text-secondary  ">Language</span>{" "}
+                <span className="text-primary ">Lab</span>
               </h3>
             </div>
           </Link>
@@ -122,7 +123,7 @@ const Navbar = () => {
 
             {/* sun icon */}
             <svg
-              className="swap-on fill-current w-10 h-10"
+              className="swap-on text-primary fill-current w-10 h-10"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -131,7 +132,7 @@ const Navbar = () => {
 
             {/* moon icon */}
             <svg
-              className="swap-off  fill-current w-8 h-8 mt-1 mr-10"
+              className="swap-off text-primary  fill-current w-8 h-8 mt-1 mr-4 md:mr-10"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -141,29 +142,14 @@ const Navbar = () => {
           {loading ? (
             "Loading"
           ) : user ? (
-            <>
-              {user.photoURL ? (
-                <img
-                  title={user?.displayName}
-                  className="w-8 h-8 rounded-full mr-4 cursor-pointer"
-                  src={user?.photoURL}
-                ></img>
-              ) : (
-                <img
-                  title={user?.displayName}
-                  className="w-10 mr-2 cursor-pointer rounded-full"
-                  src="https://img.freepik.com/premium-vector/young-smiling-man-avatar-man-with-brown-beard-mustache-hair-wearing-yellow-sweater-sweatshirt-3d-vector-people-character-illustration-cartoon-minimal-style_365941-860.jpg?w=2000"
-                ></img>
-              )}
-              <button onClick={handleLogOut} className="primary-btn px-6 py-2">
-                LogOut
-              </button>
-            </>
+            <Profile handleLogOut={handleLogOut} user={user} />
           ) : (
             <Link>
               <Link to="/login">
                 {" "}
-                <button className="primary-btn px-12 py-3">Login</button>
+                <button className="primary-btn px-3 py-1 md:px-12 md:py-3">
+                  Login
+                </button>
               </Link>
             </Link>
           )}

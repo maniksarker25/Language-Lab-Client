@@ -10,13 +10,13 @@ const DashBoard = () => {
   }
   return (
       <div className="max-w-screen-xl mx-auto">
-        <div className="drawer lg:drawer-open">
+        <div className="drawer  lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content ">
           <Outlet></Outlet>
           <label
             htmlFor="my-drawer-2"
-            className=" drawer-button absolute top-4 left-4 lg:hidden"
+            className=" drawer-button w-10 h-10 absolute top-4 left-4 lg:hidden"
           >
             <FaBars />
           </label>
