@@ -3,6 +3,9 @@ import AboutSection from "../AboutSection/AboutSection";
 import Banner from "../Banner/Banner";
 import TopInstructors from "../TopInstructors/TopInstructors";
 import PopularClasses from "../PopularClasses/PopularClasses";
+import PeopleLike from "../PeopleLike/PeopleLike";
+import OurPricing from "../OurPricing/OurPricing";
+import PeopleSays from "../PeopleSays/PeopleSays";
 
 const Home = () => {
   return (
@@ -10,10 +13,13 @@ const Home = () => {
       <Helmet>
         <title>LanguageLab-Home</title>
       </Helmet>
-     <Banner></Banner>
-     <AboutSection/>
-     <PopularClasses/>
-     <TopInstructors/>
+      <Banner></Banner>
+      <AboutSection />
+      <PopularClasses />
+      <TopInstructors />
+      <PeopleLike />
+      <OurPricing />
+      <PeopleSays />
     </div>
   );
 };

@@ -18,17 +18,19 @@ body {
 .default {
   @apply font-semibold  tracking-wide text-xl text-gray-700 transition-colors duration-300 hover:text-[#FF7350];
 }
-.text-secondary{
-  @apply text-[#125875]
+.text-secondary {
+  @apply text-[#125875];
 }
-.text-primary{
-  @apply text-[#FF7350]
-}
-
-.container{
-  @apply max-w-screen-xl mx-auto
+.text-primary {
+  @apply text-[#FF7350];
 }
 
+.container {
+  @apply max-w-screen-xl mx-auto;
+}
+.pricing-img {
+  background-image: url(../src/assets/aboutUsBanner.jpg);
+}
 
 /* @media (max-width: 500px) {
   .drawer{

@@ -9,7 +9,7 @@ const PopularClasses = () => {
     <div className="mt-20 p-4 lg:p-0">
       <div className="text-center">
         <p className="text-[#FF7350] font-bold">Explore Our Popular Classes</p>
-        <h3 className="text-5xl mt-2 font-semibold ">Popular Classes</h3>
+        <h3 className="text-4xl mt-2 font-semibold ">Popular Classes</h3>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16 gap-6">
         {approvedClasses.slice(0, 6).map((approvedClass) => (
